@@ -21,9 +21,9 @@ jobs:
           token: ${{ secrets.WORKFLOW_SECRET }}
 
       - name: Run GitHub Action Updater
-        uses: saadmk11/github-action-upgrade@v0.5.6
+        uses: saadmk11/github-actions-version-updater@skip-pr
         with:
           token: ${{ secrets.WORKFLOW_SECRET }}
           commit_message: "Custom Commit Message"
           pull_request_title: "Custom GHA Update"
-          skip_pull_request: '0'
+          skip_pull_request: '1'
