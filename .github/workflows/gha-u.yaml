@@ -21,6 +21,7 @@ jobs:
 
     - name: Run Python Script
       shell: python
+      id: out
       run: |
         import github_action_utils as gha_utils
         import requests
@@ -33,6 +34,10 @@ jobs:
                 col=1, end_column=2, line=1, end_line=2,
             )
             gha_utils.notice("Another notice message")
-            gha_utils.append_job_summary("# Hello World")
-            gha_utils.append_job_summary("# test summary")
             gha_utils.append_job_summary(data.text)
+            gha_utils.set_output("out", data.text)
+
+    - name: Output
+      run: |
+        echo "${{ steps.out.outputs.data }}"
+        echo "${{ steps.out.outputs.data }}" >> $GITHUB_STEP_SUMMARY
