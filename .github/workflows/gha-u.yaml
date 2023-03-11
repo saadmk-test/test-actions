@@ -34,8 +34,7 @@ jobs:
                 col=1, end_column=2, line=1, end_line=2,
             )
             gha_utils.notice("Another notice message")
-            gha_utils.append_job_summary(data.text)
-            gha_utils.set_output("out", data.text)
+            gha_utils.set_output("data", data.text)
 
     - name: Output
       run: |
